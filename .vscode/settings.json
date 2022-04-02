@@ -49,7 +49,8 @@
         "random": "cpp",
         "limits": "cpp",
         "cassert": "cpp",
-        "cstdalign": "cpp"
+        "cstdalign": "cpp",
+        "iomanip": "cpp"
     },
     "cSpell.words": [
         "arithmatex",
