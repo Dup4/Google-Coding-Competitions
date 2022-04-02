@@ -44,6 +44,20 @@ inline bool chmin(T &a, const S &b) {
 #endif
 // head
 
+void run() {}
+
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    cout << fixed << setprecision(20);
+
+    int _T;
+    cin >> _T;
+    for (int i = 1; i <= _T; ++i) {
+        cout << "Case #" << i << ": ";
+        run();
+    }
+
     return 0;
 }
