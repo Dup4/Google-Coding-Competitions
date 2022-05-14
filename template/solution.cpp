@@ -52,7 +52,7 @@ int main() {
     cout.tie(nullptr);
     cout << fixed << setprecision(20);
 
-    int _T;
+    int _T = 0;
     cin >> _T;
     for (int i = 1; i <= _T; ++i) {
         cout << "Case #" << i << ": ";
