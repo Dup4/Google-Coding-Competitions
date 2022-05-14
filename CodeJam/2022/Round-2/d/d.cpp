@@ -57,22 +57,25 @@ struct node {
 ll gao(vector<node> &v) {
     int m = v.size();
 
-    sort(v.begin(), v.end());
-    v.insert(v.begin(), node());
+    v.emplace_back(node{
+            .x = -1,
+            .v = 0,
+    });
 
-    vector<vector<ll>> f(m + 1, vector<ll>(3, numeric_limits<ll>::max()));
+    sort(v.begin(), v.end());
+
+    vector<vector<ll>> f(m + 1, vector<ll>(3, 1ll * 10000 * 1e9));
 
     f[0][2] = 0;
 
     for (int i = 1; i <= m; i++) {
         ll baseCost = 1ll * v[i].x * 2;
 
-        f[i][2] = min(f[i][2], f[i - 1][2] + baseCost);
-        f[i][v[i].v] = min(f[i][v[i].v], f[i - 1][2]);
-
-        for (int j = 0; j < 2; j++) {
+        for (int j = 0; j <= 2; j++) {
             f[i][j] = min(f[i][j], f[i - 1][j] + baseCost);
         }
+
+        f[i][v[i].v] = min(f[i][v[i].v], f[i - 1][2]);
 
         f[i][2] = min(f[i][2], f[i - 1][v[i].v ^ 1] + baseCost);
         f[i][2] = min(f[i][2], f[i - 1][v[i].v] + baseCost + C);
@@ -83,6 +86,7 @@ ll gao(vector<node> &v) {
 
 void run() {
     cin >> n >> C;
+
     vector<node> f, g;
     for (int i = 0; i < n; i++) {
         int x, v;
